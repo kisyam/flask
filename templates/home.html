@@ -1,0 +1,36 @@
+{% extends "base.html" %} {% block title %} Home {% endblock %}
+{% block head %}
+<style>
+    #feed {
+        text-align: center;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 15px;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<h2>글 보기</h2>
+<section id="feed">
+    {% for row in res %}
+    <article href="/">
+        <div class="grid">
+            <a href="/view/{{row.num}}" style="text-decoration: none;">
+                <div>
+                    <img src="{{url_for('static' , filename='images/' +row.image)}}" style="height: 150px;" alt="">
+                    <h4>{{row.title}}</h4>
+                    <p>{{row.description}}</p>
+                    <footer class="card">
+                        <strong><span>{{row.name}}</span></strong>
+                        <span>{{row.time}}</span>
+                    </footer>
+                </div>
+            </a>
+        </div>
+    </article>
+    {% endfor %}
+</section>
+
+
+{% endblock %}

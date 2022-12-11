@@ -1,0 +1,16 @@
+{% extends "base.html" %} {% block title %} {{session['name']}} page {% endblock %}
+
+{% block content %}
+
+{% if '.' in row.image  %}
+<img src="{{url_for('static', filename='images/'+row.image)}}" alt="게시물">
+<h3>{{row.title}}</h3>
+<h4>{{row.description}}</h4>
+
+{% else %}
+<h3>{{row.title}}</h3>
+<h4>{{row.description}}</h4>
+{% endif %}
+
+
+{% endblock %}

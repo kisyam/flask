@@ -1,0 +1,28 @@
+{% extends "base.html" %} {% block title %} write {% endblock %}
+
+
+{% block content %}
+
+<form action="{{url_for('write')}}" method="POST" enctype="multipart/form-data">
+    <label for="title">
+        제목
+        <input type="text" id="title" name="title" placeholder="제목을 입력하세요">
+    </label>
+    <label for="description">
+        내용
+        <textarea rows="4" cols="50" type="text" id="description" name="description" placeholder="내용을 입력하세요"></textarea>
+    </label>
+    <label for="image">
+        사진을 첨부하세요.
+        <input type="file" id="image" name="image">
+    </label>
+    <button type="submit">등록</button>
+</form>
+
+    <!-- <section id="modal">
+        <button class="contrast" data-target="modal-example" onclick="toggleModal(event)">Launch demo modal</button>
+    </section> -->
+
+
+
+{% endblock %}

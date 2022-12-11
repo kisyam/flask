@@ -1,0 +1,36 @@
+{% extends "base.html" %} {% block title %} Login {% endblock %}
+
+
+{% block content %}
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+{% for msg in messages %}
+<p>{{msg}}</p>
+{% endfor %}
+{% endif %}
+{% endwith %}
+<article class="grid">
+    <form action="{{url_for('login')}}" method="post">
+        <label for="login_id">
+            ID
+            <input type="text" id="login_id" name="login_id" placeholder="아이디" required>
+        </label>
+        <label for="password">
+            Password
+            <input type="password" id="password" name="password" placeholder="비밀번호" required>
+        </label>
+        <fieldset>
+            <label for="remember">
+                <input type="checkbox" role="switch" id="remember" name="remember">
+                Remember me
+            </label>
+        </fieldset>
+        <button type="submit">로그인</button>
+    </form>
+    <div
+        style="background-image: url(https://source.unsplash.com/random/?city,night); background-size: cover; border-radius: 10px;">
+    </div>
+</article>
+<span>아직 회원이 아니신가요?</span>
+<a href="/sign_up">회원가입</a>
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends "base.html" %} {% block title %} {{session['name']}} page {% endblock %}
+
+
+{% block content %}
+<h2>내 피드 목록</h2>
+<table role="grid">
+    <thead>
+        <tr>
+            <th scope="col">번호</th>
+            <th scope="col">제목</th>
+            <th scope="col">작성자</th>
+            <!-- <th scope="col">내용</th> -->
+            <th scope="col">작성시간</th>
+            <th scope="col">사진</th>
+            <th scope="col">수정</th>
+            <th scope="col">삭제</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for row in rows %}
+        <tr>
+            <td>{{row.id}}</td>
+            <td>{{row.title}}</td>
+            <td>{{row.name}}</td>
+            <!-- <td>{{row.description}}</td> -->
+            <td>{{row.created_at}}</td>
+            <td><img src="{{url_for('static', filename='images/'+row.image)}}" style="height: 50px;" alt=""></td>
+            <td><a href="/mypage/edit/{{row.id}}" role="button">수정</a></td>
+            <td><a href="/mypage/delete/{{row.id}}" role="button">삭제</a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

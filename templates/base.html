@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %} Home {% endblock %}</title>
+    {% block head %}
+    {% endblock %}
+    <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css">
+</head>
+
+<body>
+    <nav class="container-fluid">
+        <ul>
+            <a href="/">
+                <li><strong>Ma8Tofu</strong></li>
+            </a>
+        </ul>
+        {% if session['name'] %}
+        <ul><strong><span>안녕하세요 {{session['name']}}님</span></strong></ul>
+        <li role="list" dir="rtl"><a href="#" aria-haspopup="listbox"></a>
+            <ul role="listbox">
+                <li><a id="mypage" href="/mypage">마이페이지</a></li>
+                <li><a id="write" href="/write">글쓰기</a></li>
+                <li><a id="logout" href="/logout">로그아웃</a></li>
+            </ul>
+        </li>
+        {% else %}
+        <ul>
+            <li>
+                <a href="/login" role="button" class="outline">로그인</a>
+            </li>
+        </ul>
+        {% endif %}
+    </nav>
+
+    <main class="container">
+        <div>
+            {% block content %}
+            {% endblock %}
+        </div>
+    </main>
+    <script src="https://code.jquery.com/jquery-3.6.1.slim.min.js"></script>
+</body>
+
+</html>

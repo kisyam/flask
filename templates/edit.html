@@ -1,0 +1,19 @@
+{% extends "base.html" %} {% block title %} {{session['name']}} 수정 페이지 {% endblock %}
+
+{% block content %}
+{% for row in rows %}
+<!-- jinja2 로 textarea 에 value 전달이 안되는 것 같다. (해결완료)--> textarea 사이에 넣으면 됨
+
+<form method="POST" enctype="multipart/form-data">
+    <label for="title">제목</label>
+    <input type="text" id="title" name="title" value="{{row.title}}">
+    <label for="description">내용</label>
+    <textarea  rows="4" cols="50" type="text" id="description" name="description">{{row.description}}</textarea>
+    <input type="file" id="image" name="image">
+    <label for="image">{{row.image}}</label>
+    <button type="submit">수정하기</button>
+</form>
+
+{% endfor %}
+
+{% endblock %}
